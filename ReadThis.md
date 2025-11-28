@@ -22,7 +22,7 @@ docker-compose.yml — Orchestration for MongoDB, backend, frontend
 ### git clone https://github.com/Hafiz-mn/crud-dd-task-mean-app
 ### cd crud-dd-task-mean-app
 
-## 2. Build Docker Images Locally (Optional)
+## 2. Build Docker Images Locally 
 
 ### For frontend:
 
