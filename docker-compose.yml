@@ -4,7 +4,7 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongodb
-    restart: always
+    restart: unless-stopped
     ports:
       - "27017:27017"
     volumes:
@@ -13,7 +13,7 @@ services:
   backend:
     image: hafizmn3/backend-app:latest   
     container_name: backend
-    restart: always
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
@@ -24,9 +24,9 @@ services:
   frontend:
     image: hafizmn3/frontend-app:latest   
     container_name: frontend
-    restart: always
+    restart: unless-stopped
     ports:
-      - "80:80"
+      - "8081:80"
     depends_on:
       - backend
 
