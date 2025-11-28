@@ -1,10 +1,10 @@
-MEAN Stack CRUD Application - Dockerized with CI/CD Pipeline
+# MEAN Stack CRUD Application - Dockerized with CI/CD Pipeline
 
-Project Overview
+## Project Overview
 
 This project is a full-stack CRUD application built using the MEAN stack (MongoDB, Express, Angular 15, Node.js). It is fully containerized using Docker and deployed on an Ubuntu VM with Docker Compose. A CI/CD pipeline automates the building, pushing, and deployment of Docker images.
 
-Repository Contents
+## Repository Contents
 
 backend/ — Node.js + Express REST API backend
 
@@ -17,24 +17,24 @@ docker-compose.yml — Orchestration for MongoDB, backend, frontend
 .github/workflows/ — GitHub Actions CI/CD pipeline config
 
 
-1. Setup & Deployment Instructions
+## 1. Setup & Deployment Instructions
 
-git clone https://github.com/Hafiz-mn/crud-dd-task-mean-app
-cd crud-dd-task-mean-app
+### git clone https://github.com/Hafiz-mn/crud-dd-task-mean-app
+### cd crud-dd-task-mean-app
 
-2. Build Docker Images Locally (Optional)
+## 2. Build Docker Images Locally (Optional)
 
-For frontend:
+### For frontend:
 
-cd frontend
-docker build -t frontend-app .   
+ cd frontend
+ docker build -t frontend-app .   
 
-For Backend:
+### For Backend:
 
 cd backend
 docker build -t backend-app .
 
-3. Push Images to Docker Hub
+## 3. Push Images to Docker Hub
 
 docker tag frontend-app (yourdockerhubusername)/frontend-app:latest
 docker tag backend-app (yourdockerhubusername)/backend-app:latest
@@ -42,13 +42,13 @@ docker tag backend-app (yourdockerhubusername)/backend-app:latest
 docker push (yourdockerhubusername)/frontend-app:latest
 docker push (yourdockerhubusername)/backend-app:latest
 
-4. Set Up Ubuntu VM
+## 4. Set Up Ubuntu VM
 
 * Launch an Ubuntu VM on AWS/Azure/any cloud provider.
 * Install Docker & Docker Compose.
 * Clone the repository on the VM.
 
-5. Configure Docker Compose
+## 5. Configure Docker Compose
 
 * The docker-compose.yml manages:
 * MongoDB container (official image)
@@ -56,24 +56,24 @@ docker push (yourdockerhubusername)/backend-app:latest
 * Frontend container
 * Network and environment variables
 
-6. Deploy Application with Docker Compose
+## 6. Deploy Application with Docker Compose
    
   docker compose up -d
 
-7. Nginx Reverse Proxy Setup (Optional)
+## 7. Nginx Reverse Proxy Setup (Optional)
 
 * Configured to forward requests to frontend (port 8081) and backend (port 8080), accessible via port 80.
 * Nginx config file location: /etc/nginx/sites-enabled/mean-app
 * Restart Nginx:  sudo systemctl restart nginx
 
-8. CI/CD Pipeline (GitHub Actions)
+## 8. CI/CD Pipeline (GitHub Actions)
 
 * On every push to main branch:
 * Build updated Docker images
 * Push images to Docker Hub
 * SSH into VM to pull images and restart containers
 
-9. Infrastructure Details
+## 9. Infrastructure Details
 
 * Ubuntu Virtual Machine hosted on AWS EC2 (or any cloud provider of your choice)
 * Docker and Docker Compose installed on the VM to manage containerized services
@@ -82,7 +82,7 @@ docker push (yourdockerhubusername)/backend-app:latest
 * Nginx is configured as a reverse proxy on the VM, forwarding HTTP requests from port 80 to the appropriate backend and frontend services.
 * Security Group allows only inbound traffic from ssh port(22) and http port (80)
 
-10. Screenshots
+## 10. Screenshots
     
 <img width="1860" height="807" alt="Screenshot 2025-11-28 170203" src="https://github.com/user-attachments/assets/d489be08-df9f-4cbf-9909-69ba1f3f9306" />
 <img width="1829" height="459" alt="Screenshot 2025-11-28 170210" src="https://github.com/user-attachments/assets/e2a124f1-f951-41e7-96d2-3517aea12eb7" />      
