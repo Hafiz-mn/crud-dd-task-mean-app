@@ -1,0 +1,35 @@
+version: 'latest'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    image: hafizmn3/backend-app:latest   
+    container_name: backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=mongodb://mongodb:27017/dd_db
+    depends_on:
+      - mongodb
+
+  frontend:
+    image: hafizmn3/frontend-app:latest   
+    container_name: frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+
