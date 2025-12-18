@@ -46,6 +46,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /app/crud-dd-task-mean-app/  
-            docker compose pull
+            git init
+            git pull https://github.com/Hafiz-mn/crud-dd-task-mean-app.git
+            docker compose pull 
             docker compose up -d
