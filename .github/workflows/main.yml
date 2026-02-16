@@ -32,22 +32,6 @@ jobs:
           tags: docker tag ${{ secrets.IMAGE_TAG }}:frontend
 
       - name: Push to AWS ECR
-        run: docker push public.ecr.aws/w0g4t3k7/mypub:frontend
-        run: docker push public.ecr.aws/w0g4t3k7/mypub:backend
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Login to Amazon ECR
-        id: login-pf-aws-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Build and push Docker image
-        env:
-          ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        run: docker push ${{ secrets.IMAGE_PUSH }}:frontend
+        run: docker push ${{ secrets.IMAGE_PUSH }}:backend
+       
