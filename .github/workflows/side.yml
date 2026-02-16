@@ -32,6 +32,7 @@ jobs:
           tags: docker tag ${{ secrets.IMAGE_TAG }}:frontend
 
       - name: Push to AWS ECR
-        run: docker push ${{ secrets.IMAGE_PUSH }}:frontend
-        run: docker push ${{ secrets.IMAGE_PUSH }}:backend
+        run: |
+          docker push ${{ secrets.IMAGE_PUSH }}:frontend
+          docker push ${{ secrets.IMAGE_PUSH }}:backend
        
