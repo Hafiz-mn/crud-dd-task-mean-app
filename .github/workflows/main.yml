@@ -33,11 +33,13 @@ jobs:
       - name: Install frontend dependencies
         run: |
               cd frontend
+              npm install
               npm ci
 
       - name: Run frontend tests
         run: |
              cd frontend
+             npm install
              npm test -- --watch=false --browsers=ChromeHeadless
       
       - name: Build and push frontend Docker image
