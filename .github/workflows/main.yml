@@ -50,8 +50,8 @@ jobs:
           
       - name: Tag images for ECR
         run: |
-         docker tag backend-image public.ecr.aws/w0g4t3k7/mypub:backend
-         docker tag frontend-image public.ecr.aws/w0g4t3k7/mypub:frontend
+         docker tag backend-image public.ecr.aws/w0g4t3k7/mypub:backend-v2
+         docker tag frontend-image public.ecr.aws/w0g4t3k7/mypub:frontend-v2
 
       - name: Setup AWS ECR Details
         uses: aws-actions/configure-aws-credentials@v1
@@ -69,7 +69,7 @@ jobs:
 
       - name: Push to ECR
         run: |
-          docker push public.ecr.aws/w0g4t3k7/mypub:backend
-          docker push public.ecr.aws/w0g4t3k7/mypub:frontend
+          docker push public.ecr.aws/w0g4t3k7/mypub:backend-v2
+          docker push public.ecr.aws/w0g4t3k7/mypub:frontend-v2
 
      
