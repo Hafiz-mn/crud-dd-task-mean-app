@@ -17,4 +17,7 @@ jobs:
           aws-region: us-east-2
 
       - run: terraform init
+        working-directory: ./k8s
+        
       - run: terraform destroy -auto-approve
+        working-directory: ./k8s
