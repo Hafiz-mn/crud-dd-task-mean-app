@@ -25,4 +25,5 @@ resource "helm_release" "grafana" {
     name = "adminPassword" 
     value = "admin"
 } 
+}
 
