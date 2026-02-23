@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::835590170296:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/48199C805307727272DAA67D0C061001"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "oidc.eks.us-east-2.amazonaws.com/id/< OIDC ID >:sub": "system:serviceaccount:loki:loki",
+                    "oidc.eks.us-east-2.amazonaws.com/id/< OIDC ID >:aud": "sts.amazonaws.com"
+                }
+            }
+        }
+    ]
+}
