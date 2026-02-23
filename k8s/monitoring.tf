@@ -5,6 +5,7 @@ resource "helm_release" "prometheus" {
 
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "prometheus"
+  timeout = 600
   version    = "15.12.1"   # use a stable version
 
   depends_on = [module.eks]
@@ -26,6 +27,7 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+
 
 
 
