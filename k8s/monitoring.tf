@@ -17,8 +17,6 @@ resource "helm_release" "grafana" {
 
   repository = "https://grafana.github.io/helm-charts"
   chart      = "grafana"
-  version    = "15.2.1"   # use a stable version
-
   depends_on = [module.eks]
   
    set = [
@@ -28,6 +26,7 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+
 
 
 
