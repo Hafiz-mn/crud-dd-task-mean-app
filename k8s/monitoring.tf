@@ -21,10 +21,13 @@ resource "helm_release" "grafana" {
 
   depends_on = [module.eks]
   
-  set = {
-    name = "adminPassword" 
-    value = "admin"
-} 
+   set = [
+    {
+      name  = "adminPassword"
+      value = "admin"
+    }
+  ]
 }
+
 
 
