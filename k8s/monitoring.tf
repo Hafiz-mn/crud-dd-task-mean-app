@@ -21,9 +21,10 @@ resource "helm_release" "grafana" {
 
   depends_on = [module.eks]
   
-  set {
+  set = {
     name = "adminPassword" 
     value = "admin"
 } 
 }
+
 
