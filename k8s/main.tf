@@ -58,3 +58,14 @@ enable_cluster_creator_admin_permissions = true
     }
    }
 }
+terraform {
+  backend "s3" {
+    bucket         = "hafiz-terraform-state"
+    key            = "eks-gitops/terraform.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+
+
