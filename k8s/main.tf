@@ -24,7 +24,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = "terra-eks"
+  name               = "terra-eks2"
   kubernetes_version = "1.29"
 
   addons = {
@@ -70,6 +70,7 @@ terraform {
     encrypt        = true
   }
 }
+
 
 
 
