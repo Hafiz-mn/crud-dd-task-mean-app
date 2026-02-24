@@ -39,6 +39,9 @@ module "eks" {
     }
 aws-ebs-csi-driver = {
     most_recent = true
+attach_policy_arns = [
+    "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  ]
   }
   }
 
@@ -71,6 +74,7 @@ terraform {
     encrypt        = true
   }
 }
+
 
 
 
