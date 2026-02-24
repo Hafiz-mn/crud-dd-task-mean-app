@@ -36,6 +36,9 @@ module "eks" {
     vpc-cni                = {
       before_compute = true
     }
+aws-ebs-csi-driver = {
+    most_recent = true
+  }
   }
 
   vpc_id     = module.vpc.vpc_id
@@ -67,6 +70,7 @@ terraform {
     encrypt        = true
   }
 }
+
 
 
 
