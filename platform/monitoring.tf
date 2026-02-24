@@ -9,6 +9,12 @@ resource "helm_release" "prometheus" {
   version    = "15.12.1"   # use a stable version
 
   depends_on = [module.eks]
+   set = [
+    {
+      name  = "server.persistentVolume.enabled"
+      value = "false"
+    }
+  ]
 }
 
 resource "helm_release" "grafana" {
@@ -27,6 +33,7 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+
 
 
 
