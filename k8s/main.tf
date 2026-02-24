@@ -10,7 +10,7 @@ module "vpc" {
   map_public_ip_on_launch = true
 
 public_subnet_tags = {
-  "kubernetes.io/cluster/terra-eks" = "shared"
+  "kubernetes.io/cluster/terra-eks2" = "shared"
   "kubernetes.io/role/elb" = "1"
 }
 
@@ -23,6 +23,7 @@ public_subnet_tags = {
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
+  enable_irsa = true
 
   name               = "terra-eks2"
   kubernetes_version = "1.29"
@@ -38,7 +39,6 @@ module "eks" {
     }
 aws-ebs-csi-driver = {
     most_recent = true
-service_account_role_arn = aws_iam_role.eks_addon.arn
   }
   }
 
@@ -71,6 +71,7 @@ terraform {
     encrypt        = true
   }
 }
+
 
 
 
