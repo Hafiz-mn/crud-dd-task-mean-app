@@ -6,6 +6,4 @@ resource "helm_release" "argo_rollouts" {
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-rollouts"
   version    = "2.35.1"   # use a stable version
-
-  depends_on = [module.eks]
 }
