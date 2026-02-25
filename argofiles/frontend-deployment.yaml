@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+ name: frontend
+ labels:
+   app: Frontend
+spec:
+ replicas: 5
+ strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 30s }
+        - setWeight: 50
+        - pause: { duration: 30s }
+ selector:
+   matchLabels:
+     app: Frontend
+ template:
+   metadata:
+     labels:
+       app: Frontend
+   spec:
+     containers:
+     - name: frontend
+       image: public.ecr.aws/w0g4t3k7/mypub:frontend-v2
+       ports:
+       - containerPort: 80
+
