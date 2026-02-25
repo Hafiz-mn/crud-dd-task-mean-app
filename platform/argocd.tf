@@ -1,7 +1,16 @@
+data "aws_eks_cluster" "eks" {
+  name = "terra-eks2"
+}
+
+data "aws_eks_cluster_auth" "eks" {
+  name = "terra-eks2"
+}
+
 provider "helm" {
   kubernetes = {
-    host                   = module.eks.cluster_endpoint
-    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+    host                   = data.ews_eks_cluster.eks.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority[0].data)
+    token = data.aws_eks_cluster_auth.eks.token
 
     exec = {
       api_version = "client.authentication.k8s.io/v1beta1"
@@ -20,4 +29,5 @@ resource "helm_release" "argocd" {
   version    = "5.51.6"
 
   depends_on = [module.eks]
+
 }
