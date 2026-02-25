@@ -8,7 +8,6 @@ resource "helm_release" "prometheus" {
   timeout = 600
   version    = "15.12.1"   # use a stable version
 
-  depends_on = [module.eks]
    set = [
     {
       name  = "server.persistentVolume.enabled"
@@ -24,7 +23,6 @@ resource "helm_release" "grafana" {
 
   repository = "https://grafana.github.io/helm-charts"
   chart      = "grafana"
-  depends_on = [module.eks]
   
    set = [
     {
@@ -33,6 +31,7 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+
 
 
 
