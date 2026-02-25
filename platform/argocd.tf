@@ -15,7 +15,7 @@ provider "helm" {
     exec = {
       api_version = "client.authentication.k8s.io/v1beta1"
       command     = "aws"
-      args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks.cluster_name]
+      args        = ["eks", "get-token", "--cluster-name", "terra-eks2"]
     }
   }
 }
@@ -31,4 +31,5 @@ resource "helm_release" "argocd" {
   depends_on = [module.eks]
 
 }
+
 
