@@ -12,6 +12,10 @@ resource "helm_release" "prometheus" {
     {
       name  = "server.persistentVolume.enabled"
       value = "false"
+    },
+    {
+      name  = "alertmanager.persistentVolume.enabled"
+      value = "false"
     }
   ]
 }
@@ -31,6 +35,7 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+
 
 
 
