@@ -8,14 +8,14 @@ data "aws_eks_cluster_auth" "eks" {
 
 provider "helm" {
   kubernetes = {
-    host                   = data.ews_eks_cluster.eks.endpoint
+    host                   = data.aws_eks_cluster.eks.endpoint
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority[0].data)
     token = data.aws_eks_cluster_auth.eks.token
 
     exec = {
       api_version = "client.authentication.k8s.io/v1beta1"
       command     = "aws"
-      args        = ["eks", "get-token", "--cluster-name", module.eks.cluster_name]
+      args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks.cluster_name]
     }
   }
 }
@@ -31,3 +31,4 @@ resource "helm_release" "argocd" {
   depends_on = [module.eks]
 
 }
+
