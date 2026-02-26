@@ -35,6 +35,23 @@ resource "helm_release" "grafana" {
     }
   ]
 }
+resource "helm_release" "loki" {
+  name             = "loki"
+  namespace        = "monitoring"
+  create_namespace = true
+
+  repository = "https://grafana.github.io/helm-charts"
+  chart      = "loki-stack"
+  version    = "2.10.2"
+
+  set = [
+    {
+      name  = "grafana.enabled"
+      value = "false"
+    }
+  ]
+}
+
 
 
 
